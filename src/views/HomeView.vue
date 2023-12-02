@@ -53,6 +53,7 @@ function clickTag(key) {
   this.role = key
 }
 </script>
+
 <template>
   <div id="login" style="height: 90vh">
     <div class="bg"></div>
@@ -74,6 +75,7 @@ function clickTag(key) {
               <div class="submit">
                 <el-button type="primary" class="row-login" @click="login()">登录</el-button>
               </div>
+              <div></div>
               <div class="options">
                 <p class="find"><a href="javascript:;">找回密码</a></p>
                 <div class="register">
@@ -114,11 +116,6 @@ function clickTag(key) {
   margin-bottom: 32px;
   width: 20vw;
 }
-
-.container .el-radio-group {
-  margin: 30px 0px;
-}
-
 a:link {
   color: #ff962a;
   text-decoration: none;
@@ -178,39 +175,20 @@ a:link {
 }
 
 .bottom .container .title {
-  margin: 30px 0px;;
+  margin: 30px 0;;
 }
 
 .bottom .submit .row-login {
   width: 100%;
   background-color: #04468b;
   border-color: #04468b;
-  margin: 20px 0px 10px 0px;
+  margin: 20px 0 10px 0;
   padding: 15px 20px;
 }
 
 .bottom .submit {
   display: flex;
   justify-content: center;
-}
-
-.footer {
-  bottom: 10vw;
-  position: fixed;
-  text-align: center;
-
-}
-
-.footer .msg1 {
-  font-size: 18px;
-  color: #fff;
-  margin-bottom: 15px;
-}
-
-.footer .msg2 {
-  font-size: 14px;
-  color: #e3e3e3;
-  margin-top: 70px;
 }
 
 .bottom .options {
