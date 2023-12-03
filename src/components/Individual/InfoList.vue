@@ -1,3 +1,10 @@
+
+<script setup lang="ts">
+import {useUserinfoStore} from "@/stores/UserInfo";
+
+const store=useUserinfoStore()
+
+</script>
 <template>
   <el-descriptions
       title="用户基本信息"
@@ -6,23 +13,17 @@
       direction="vertical"
       :style="blockMargin"
   >
-    <el-descriptions-item label="用户名">kooriookami</el-descriptions-item>
-    <el-descriptions-item label="电话">18100000000</el-descriptions-item>
-    <el-descriptions-item label="年级" :span="2">大三</el-descriptions-item>
+    <el-descriptions-item label="用户名">{{store.UserName}}</el-descriptions-item>
+    <el-descriptions-item label="电话">{{store.UserPhone}}</el-descriptions-item>
+    <el-descriptions-item label="年级" :span="2">{{store.UserGrade[0]}}</el-descriptions-item>
     <el-descriptions-item label="性别">
-      <el-tag size="small">男</el-tag>
+      <el-tag size="small">{{store.UserSex}}</el-tag>
     </el-descriptions-item>
-    <el-descriptions-item label="学校"
-    >云南大学
-    </el-descriptions-item>
+    <el-descriptions-item label="学校">{{store.UserSchool}}</el-descriptions-item>
+
   </el-descriptions>
 </template>
 
-<script setup lang="ts">
-
-
-
-</script>
 
 <style scoped>
 

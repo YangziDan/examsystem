@@ -1,5 +1,3 @@
-
-
 <script setup>
 import IndividualHead from "@/components/Individual/IndividualHead.vue";
 import IndividualForm from "@/components/Individual/IndividualForm.vue";
