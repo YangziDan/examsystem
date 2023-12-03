@@ -1,6 +1,6 @@
 <script setup>
-import IndividualHead from "@/components/Individual/IndividualHead.vue";
-import InfoList from "@/components/Individual/InfoList.vue";
+import IndividualHead from "@/components/Zjh/IndividualHead.vue";
+import InfoList from "@/components/Zjh/InfoList.vue";
 </script>
 
 <template>

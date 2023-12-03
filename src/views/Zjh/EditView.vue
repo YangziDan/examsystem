@@ -1,6 +1,6 @@
 <script setup>
-import IndividualHead from "@/components/Individual/IndividualHead.vue";
-import IndividualForm from "@/components/Individual/IndividualForm.vue";
+import IndividualHead from "@/components/Zjh/IndividualHead.vue";
+import IndividualForm from "@/components/Zjh/IndividualForm.vue";
 </script>
 <template>
   <div class="common-layout">

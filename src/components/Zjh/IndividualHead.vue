@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from "vue";
-import Avatar from "@/components/Individual/Avatar.vue";
+import Avatar from "@/components/Zjh/Avatar.vue";
 
 const username = ref("")
 

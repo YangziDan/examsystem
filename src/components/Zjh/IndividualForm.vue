@@ -10,7 +10,6 @@ interface RuleForm {
   phone:string
   school:string
   grade: string[]
-
 }
 
 const formSize = ref('default')
