@@ -55,17 +55,17 @@ function clickTag(key) {
 </script>
 
 <template>
-  <div id="login" style="height: 90vh">
+  <div id="login" style="height: 90vh;width: 100vw">
     <div class="bg"></div>
-    <el-row class="main-container">
-      <el-col :lg="8" :xs="16" :md="10" :span="10">
+    <el-row class="main-container" >
+      <el-col>
         <div class="top">
-          <i class="iconfont icon-kaoshi"></i><span class="title">在线考试系统</span>
+          <i class="iconfont icon-kaoshi"></i><span class="title">儿童癫痫诊疗知识在线考试系统</span>
         </div>
         <div class="bottom">
           <div class="container">
             <p class="title">账号登录</p>
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+            <el-form label-position="left" label-width="5vw"  :model="formLabelAlign" >
               <el-form-item label="用户名">
                 <el-input v-model.number="formLabelAlign.username" placeholder="请输入用户名"></el-input>
               </el-form-item>
@@ -77,10 +77,10 @@ function clickTag(key) {
               </div>
               <div></div>
               <div class="options">
-                <p class="find"><a href="javascript:;">找回密码</a></p>
+                <p class="find"><a href="javascript:;" class="comFont">找回密码</a></p>
                 <div class="register">
                   <span>没有账号?</span>
-                  <span><a href="javascript:;">去注册</a></span>
+                  <span style="display: flex;justify-content: center;align-items: center"><a href="javascript:;">去注册</a></span>
                 </div>
               </div>
             </el-form>
@@ -99,11 +99,11 @@ function clickTag(key) {
 
 <style scoped>
 .remind {
-  border-radius: 4px;
-  padding: 10px 20px;
+  border-radius: 9px;
+  padding: 1vw 2vw;
   display: flex;
   position: fixed;
-  right: 20px;
+  left: 3vw;
   bottom: 50%;
   flex-direction: column;
   color: #606266;
@@ -113,8 +113,8 @@ function clickTag(key) {
 }
 
 .container {
-  margin-bottom: 32px;
-  width: 20vw;
+  margin: 1vw 0 1vw 0;
+  width: 80%;
 }
 a:link {
   color: #ff962a;
@@ -122,9 +122,14 @@ a:link {
 }
 
 #login {
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
   color: #000;
   background-color: #fff;
+  width: 100vw;
+  height: 100vh;
 }
 
 #login .bg {
@@ -134,55 +139,66 @@ a:link {
   width: 100vw;
   overflow-y: auto;
   height: 100vh;
-  background: url('src/assets/img/loginbg.png') center top / cover no-repeat;
+  background: url('src/assets/background/pattern.png') ;
   background-color: #b6bccdd1 !important;
 }
 
-#login .main-container {
+.main-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 45vw;
+  height: 100vh;
+  margin: 0 0 0 0;
 }
 
 #login .main-container .top {
-  margin-top: 100px;
-  font-size: 30px;
+  margin-top: 1vw;
+  font-size: 3vw;
   color: #ff962a;
   display: flex;
   justify-content: center;
+  align-items: center;
+
 }
 
 #login .top .icon-kaoshi {
-  font-size: 80px;
+  font-size: 2vw;
 }
 
 #login .top .title {
-  margin-top: 20px;
+  margin-top: 2vw;
+  font-size: 2.3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
-#login .bottom {
+.bottom {
   display: flex;
   justify-content: center;
   background-color: #fff;
-  border-radius: 5px;
-  width: 40vw;
+  border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 
-#login .bottom .title {
+.bottom .title {
   text-align: center;
-  font-size: 30px;
+  font-size: 2vw;
 }
 
 .bottom .container .title {
-  margin: 30px 0;;
+  margin: 2vw 0;;
 }
 
 .bottom .submit .row-login {
   width: 100%;
   background-color: #04468b;
   border-color: #04468b;
-  margin: 20px 0 10px 0;
+  margin: 1vw 0 1vw 0;
   padding: 15px 20px;
 }
 
@@ -205,4 +221,11 @@ a:link {
 .bottom .options .register span:nth-child(1) {
   color: #8C8C8C;
 }
+.register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 </style>
