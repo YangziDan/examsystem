@@ -4,6 +4,9 @@ import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
+import MyExam from  "@/views/MyExam.vue"
+import ExamMsg from "@/views/ExamMsg.vue"
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -31,7 +34,17 @@ const router = createRouter({
       path:'/wrongQuestionBook',
       name:"wrongQuestionBook",
       component:WrongQuestionBook
-    }
+    },
+    {
+      path:'/myExam',
+      name: "myExam",
+      component: MyExam
+    },
+    {
+      path:'/examMsg',
+      name: "examMsg",
+      component: ExamMsg
+    },
   ]
 })
 
