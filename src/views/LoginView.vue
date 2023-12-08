@@ -4,7 +4,7 @@ import {ref} from "vue";
 let role = ref(2);
 let labelPosition = ref('left');
 let formLabelAlign = ref({
-  username: '20200402',
+  username: '2023',
   password: '123456'
 })
 
@@ -77,10 +77,10 @@ function clickTag(key) {
               </div>
               <div></div>
               <div class="options">
-                <p class="find"><a href="javascript:;" class="comFont">找回密码</a></p>
+                <p class="find"><a  class="comFont">找回密码</a></p>
                 <div class="register">
                   <span>没有账号?</span>
-                  <span style="display: flex;justify-content: center;align-items: center"><a href="javascript:;">去注册</a></span>
+                  <span style="display: flex;justify-content: center;align-items: center"><a>去注册</a></span>
                 </div>
               </div>
             </el-form>
