@@ -139,7 +139,6 @@ a:link {
   width: 100vw;
   overflow-y: auto;
   height: 100vh;
-  background: url('src/assets/background/pattern.png') ;
   background-color: #b6bccdd1 !important;
 }
 
