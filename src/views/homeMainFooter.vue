@@ -5,7 +5,7 @@
       <li><a href="javascript:;">关于我们</a></li>
       <li><a href="javascript:;">免责声明</a></li>
       <li><a href="javascript:;">使用协议</a></li>
-      <li><a href="http://beian.miit.gov.cn/" target="_blank">软件项目管理</a></li>
+      <li><a href="javascript:" target="_blank">软件项目管理</a></li>
       <li>@Copyright 2023-2026. ALL Rights Reserved</li>
     </ul>
   </footer>
