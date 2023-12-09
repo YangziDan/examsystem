@@ -9,7 +9,6 @@ let formLabelAlign = ref({
   username: '1',
   password: '123456'
 })
-
 function login() {
   console.log("登录操作执行-------");
   axios({
