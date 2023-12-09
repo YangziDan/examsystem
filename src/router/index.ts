@@ -4,8 +4,8 @@ import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
-import MyExam from  "@/views/MyExam.vue"
-import ExamMsg from "@/views/ExamMsg.vue"
+import MyExam from "@/views/zzw/MyExam.vue"
+import ExamMsg from "@/views/zzw/ExamMsg.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
