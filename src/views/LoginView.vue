@@ -26,13 +26,13 @@ function login() {
           cookies.set("cname", resData.adminName)
           cookies.set("cid", resData.adminId)
           cookies.set("role", 0)
-          router.push({path: '/index'}) //跳转到首页
+          router.push({path: '/'}) //跳转到首页
           break
         case "1": //教师
           cookies.set("cname", resData.teacherName)
           cookies.set("cid", resData.teacherId)
           cookies.set("role", 1)
-          router.push({path: '/index'}) //跳转到教师用户
+          router.push({path: '/'}) //跳转到教师用户
           break
         case "2": //学生
           cookies.set("cname", resData.studentName)
