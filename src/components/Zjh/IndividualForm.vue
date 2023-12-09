@@ -2,6 +2,7 @@
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import {useUserinfoStore} from "@/stores/UserInfo";
+import axios from "axios";
 
 
 interface RuleForm {
@@ -49,6 +50,33 @@ function submit() {
     UserPhone: ruleForm.phone,
     UserSchool: ruleForm.school,
     UserGrade:ruleForm.grade[0]
+  })
+}
+const UserId= ref(1314)
+
+function save(){
+  store.$patch({
+    UserName:ruleForm.name,
+    UserSex: ruleForm.sex,
+    UserPhone: ruleForm.phone,
+    UserSchool: ruleForm.school,
+    UserGrade:ruleForm.grade[0]
+  })
+  console.log("保存个人信息")
+  axios({
+    url:'http://localhost:8999/save',
+    method:'post',
+    data:{
+      userId:2,
+      userName:store.UserName,
+      userSex:store.UserSex,
+      userPhone:store.UserPhone,
+      userSchool:store.UserSchool
+
+
+    }
+  }).then(res=>{
+    console.log(res.data)
   })
 }
 
@@ -112,7 +140,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
       <el-input v-model="ruleForm.school" type="text" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click=" submit()">
+      <el-button type="primary" @click=" save()">
         提交
       </el-button>
       <el-button @click="resetForm(ruleFormRef)">清空</el-button>

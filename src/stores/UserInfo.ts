@@ -5,7 +5,7 @@ export const useUserinfoStore= defineStore('UserInfo',{
             UserName:"",
             UserSex:"",
             UserPhone:"",
-            UserGrade:'',
+            UserGrade:"",
             UserSchool:"",
             UserBirth:""
         }

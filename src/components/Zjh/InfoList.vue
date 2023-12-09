@@ -13,6 +13,7 @@ const store=useUserinfoStore()
       direction="vertical"
       :style="blockMargin"
   >
+    <el-descriptions-item label=ID>1</el-descriptions-item>
     <el-descriptions-item label="用户名">{{store.UserName}}</el-descriptions-item>
     <el-descriptions-item label="电话">{{store.UserPhone}}</el-descriptions-item>
     <el-descriptions-item label="年级" :span="2">{{store.UserGrade[0]}}</el-descriptions-item>
