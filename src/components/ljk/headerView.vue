@@ -6,7 +6,7 @@
       <el-col :span="24">
         <ul class="list">
           <li class="logo"><i class="iconfont icon-kaoshi"></i><span>儿童癫痫知识诊疗系统</span></li>
-          <li><a href="/public" >首页</a></li>
+          <li><a href="/" >首页</a></li>
           <li><a href="/myexam" @click="exam()">我的试卷</a></li>
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
           <li><a href="/studentScore">我的分数</a></li>
