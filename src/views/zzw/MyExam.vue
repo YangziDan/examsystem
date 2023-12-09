@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
-import HeaderView from "@/views/headerView.vue";
+import HeaderView from "@/components/ljk/headerView.vue";
 import axios from 'axios'
 
 

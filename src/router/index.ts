@@ -4,7 +4,7 @@ import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
-import index from "@/views/headerView.vue"
+import index from "@/components/ljk/headerView.vue"
 import home from "@/views/HomeView.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

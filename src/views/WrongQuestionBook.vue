@@ -1,7 +1,7 @@
 // 我的考试页面
 <script setup>
 import { ref } from 'vue';
-import HeaderView from "@/views/headerView.vue";
+import HeaderView from "@/components/ljk/headerView.vue";
 const loading = ref(false);
 const key = ref(null); // 搜索关键字
 const allExam = ref(null); // 所有考试信息
