@@ -1,6 +1,7 @@
 <template>
+  <header-view></header-view>
     <div id="myExam">
-        <div class="title">我的试卷</div>
+<!--        <div class="title">我的试卷</div>-->
         <div class="wrapper">
             <ul class="top">
                 <li class="order">试卷列表</li>
@@ -51,6 +52,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
+import HeaderView from "@/views/headerView.vue";
 
 const loading = ref(false);
 const key = ref<string | null>(null);

@@ -64,7 +64,7 @@
 <!--</script>-->
 <script setup>
 import { ref, onMounted } from 'vue';
-
+import HeaderView from "@/views/headerView.vue";
 const pagination = ref({
   current: 1,
   total: null,
@@ -132,6 +132,7 @@ const filterHandler = (value, row, column) => {
 </script>
 
 <template>
+  <header-view></header-view>
   <div class="table">
     <p class="title">我的分数</p>
     <section class="content-el">

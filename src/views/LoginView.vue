@@ -1,50 +1,48 @@
 <script setup>
 import {ref} from "vue";
-
+import axios from "axios";
+import cookies from "vue-cookies"
+import router from "@/router";
 let role = ref(2);
 let labelPosition = ref('left');
 let formLabelAlign = ref({
-  username: '20200402',
+  username: '1',
   password: '123456'
 })
-
 function login() {
   console.log("登录操作执行-------");
-  this.$axios({
-    url: `/api/login`,
+  axios({
+    url: `http://localhost:8999/login`,
     method: 'post',
     data: {
-      ...this.formLabelAlign
+      username:formLabelAlign.value.username,
+      password:formLabelAlign.value.password
     }
   }).then(res => {
     let resData = res.data.data
     if (resData != null) {
       switch (resData.role) {
         case "0":  //管理员
-          this.$cookies.set("cname", resData.adminName)
-          this.$cookies.set("cid", resData.adminId)
-          this.$cookies.set("role", 0)
-          this.$router.push({path: '/index'}) //跳转到首页
+          cookies.set("cname", resData.adminName)
+          cookies.set("cid", resData.adminId)
+          cookies.set("role", 0)
+          router.push({path: '/index'}) //跳转到首页
           break
         case "1": //教师
-          this.$cookies.set("cname", resData.teacherName)
-          this.$cookies.set("cid", resData.teacherId)
-          this.$cookies.set("role", 1)
-          this.$router.push({path: '/index'}) //跳转到教师用户
+          cookies.set("cname", resData.teacherName)
+          cookies.set("cid", resData.teacherId)
+          cookies.set("role", 1)
+          router.push({path: '/index'}) //跳转到教师用户
           break
         case "2": //学生
-          this.$cookies.set("cname", resData.studentName)
-          this.$cookies.set("cid", resData.studentId)
-          this.$router.push({path: '/student'})
+          cookies.set("cname", resData.studentName)
+          cookies.set("cid", resData.studentId)
+          router.push({path: '/student'})
           break
       }
     }
     if (resData == null) { //错误提示
-      this.$message({
-        showClose: true,
-        type: 'error',
-        message: '用户名或者密码错误'
-      })
+      console.log("resData is null")
     }
   })
 }
@@ -77,10 +75,10 @@ function clickTag(key) {
               </div>
               <div></div>
               <div class="options">
-                <p class="find"><a href="javascript:;" class="comFont">找回密码</a></p>
+                <p class="find"><a  class="comFont">找回密码</a></p>
                 <div class="register">
                   <span>没有账号?</span>
-                  <span style="display: flex;justify-content: center;align-items: center"><a href="javascript:;">去注册</a></span>
+                  <span style="display: flex;justify-content: center;align-items: center"><a>去注册</a></span>
                 </div>
               </div>
             </el-form>
@@ -139,7 +137,6 @@ a:link {
   width: 100vw;
   overflow-y: auto;
   height: 100vh;
-  background: url('src/assets/background/pattern.png') ;
   background-color: #b6bccdd1 !important;
 }
 

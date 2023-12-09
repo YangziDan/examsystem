@@ -1,7 +1,7 @@
 // 我的考试页面
 <script setup>
 import { ref } from 'vue';
-
+import HeaderView from "@/views/headerView.vue";
 const loading = ref(false);
 const key = ref(null); // 搜索关键字
 const allExam = ref(null); // 所有考试信息
@@ -52,6 +52,7 @@ const toExamMsg = (examCode) => {
 </script>
 
 <template>
+  <header-view></header-view>
   <div id="myExam">
     <div class="title">我的错题</div>
     <div class="wrapper">

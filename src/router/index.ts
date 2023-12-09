@@ -4,16 +4,27 @@ import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
-import MyExam from "@/views/zzw/MyExam.vue"
-import ExamMsg from "@/views/zzw/ExamMsg.vue"
-
+import MyExam from  "@/views/MyExam.vue"
+import ExamMsg from "@/views/ExamMsg.vue"
+import index from "@/views/headerView.vue"
+import home from "@/views/HomeView.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
       path: '/',
       name: 'home',
-      component: LoginView
+      component: home
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: index
     },
     {
       path: '/individual',
