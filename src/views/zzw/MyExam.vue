@@ -53,6 +53,8 @@
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
 import HeaderView from "@/views/headerView.vue";
+import axios from 'axios'
+
 
 const loading = ref(false);
 const key = ref<string | null>(null);
@@ -72,15 +74,16 @@ onMounted(() => {
 //获取当前所有考试信息
 const getExamInfo = () => {
     // Replace this with your actual axios call
-    // this.$axios(`/api/exams/${pagination.value.current}/${pagination.value.size}`)
-    //   .then((res) => {
-    //     pagination.value = res.data.data;
-    //     loading.value = false;
-    //     console.log(pagination.value);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    axios(`http://localhost:8999/examManage/exams/${pagination.value.current}/${pagination.value.size}`)
+      .then((res) => {
+          console.log(res)
+        pagination.value = res.data.data;
+        loading.value = false;
+        console.log(pagination.value);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 };
 
 //改变当前记录条数
