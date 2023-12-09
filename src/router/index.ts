@@ -4,9 +4,7 @@ import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
-import MyExam from  "@/views/MyExam.vue"
-import ExamMsg from "@/views/ExamMsg.vue"
-import index from "@/views/headerView.vue"
+import index from "@/components/ljk/headerView.vue"
 import home from "@/views/HomeView.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,12 +47,12 @@ const router = createRouter({
     {
       path:'/myExam',
       name: "myExam",
-      component: MyExam
+      component: () => import("../views/zzw/MyExam.vue")
     },
     {
       path:'/examMsg',
       name: "examMsg",
-      component: ExamMsg
+      component: () => import("../views/zzw/ExamMsg.vue")
     },
   ]
 })

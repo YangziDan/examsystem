@@ -6,9 +6,9 @@
 
 <script setup>
 
-import HeaderView from "@/views/headerView.vue";
-import HomeMainView from "@/views/homeMainView.vue";
-import HomeMainFooter from "@/views/homeMainFooter.vue";
+import HeaderView from "@/components/ljk/headerView.vue";
+import HomeMainView from "@/components/ljk/homeMainView.vue";
+import HomeMainFooter from "@/components/ljk/homeMainFooter.vue";
 </script>
 
 <style scoped>

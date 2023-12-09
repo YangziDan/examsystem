@@ -62,7 +62,7 @@
                                 <div class="titlei">填空题 (共{{ topicCount[1] }}题 共计{{ score[1] }}分)</div>
                             </template>
                             <div class="contenti">
-                                <ul class="question" v-for="(divst, index) in topic[2]" :key="index">
+                                <ul class="question" v-for="(list, index) in topic[2]" :key="index">
                                     <div>{{ topicCount[0] + index + 1 }}.{{ list.question }} {{ list.score }}分</div>
                                 </ul>
                             </div>
@@ -95,6 +95,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
+import axios from 'axios'
 
 const dialogVisible = ref(false);
 const activeName = ref('0');
@@ -109,24 +110,27 @@ onMounted(() => {
 
 const init = () => {
     // const examCode = $route.query.examCode;
-    // $axios(`/api/exam/${examCode}`).then((res) => {
-    //     res.data.data.examDate = res.data.data.examDate.substr(0, 10);
-    //     examData.value = { ...res.data.data };
-    //     const paperId = examData.value.paperId;
-    //     $axios(`/api/paper/${paperId}`).then((res) => {
-    //         topic.value = { ...res.data };
-    //         const keys = Object.keys(topic.value);
-    //         keys.forEach((e) => {
-    //             const data = topic.value[e];
-    //             topicCount.value.push(data.length);
-    //             let currentScore = 0;
-    //             for (let i = 0; i < data.length; i++) {
-    //                 currentScore += data[i].score;
-    //             }
-    //             score.value.push(currentScore);
-    //         });
-    //     });
-    // });
+    const examCode = 20190001;
+    axios.get(`http://localhost:8999/examManage/exam/${examCode}`).then((res) => {
+        console.log(res)
+        res.data.data.examDate = res.data.data.examDate.substr(0, 10);
+        examData.value = { ...res.data.data };
+        const paperId = examData.value.paperId;
+        axios(`http://localhost:8999/paperManage/paper/${paperId}`).then((res) => {
+            console.log(res)
+            topic.value = { ...res.data };
+            const keys = Object.keys(topic.value);
+            keys.forEach((e) => {
+                const data = topic.value[e];
+                topicCount.value.push(data.length);
+                let currentScore = 0;
+                for (let i = 0; i < data.length; i++) {
+                    currentScore += data[i].score;
+                }
+                score.value.push(currentScore);
+            });
+        });
+    });
 };
 
 const toAnswer = (id) => {
