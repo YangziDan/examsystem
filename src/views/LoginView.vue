@@ -40,6 +40,7 @@ function login() {
           router.push({path: '/'})
           break
       }
+      alert('登录成功')
     }
     if (resData == null) { //错误提示
       console.log("resData is null")

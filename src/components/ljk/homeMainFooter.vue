@@ -18,19 +18,19 @@
 <style scoped>
 #footer a {
   color: #919698;
-  font-size: 14px;
+  font-size: 1vw;
 }
 #footer {
-  background-color: #eee;
+  background-color: #1D2C38;
   width: 100vw;
   position: fixed;
   bottom: 0;
 }
 #footer ul {
   margin-top: 2vw;
-  border-top: 1px solid #d5d5d5;
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 6vw;
   line-height: 6vw;
 }
@@ -38,5 +38,8 @@
   color: #919698;
   font-size: 1vw;
   margin-right: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

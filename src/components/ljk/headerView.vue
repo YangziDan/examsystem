@@ -1,18 +1,18 @@
 <!--学生考试首页-->
 <template>
-
-  <div id="student">
-    <el-row class="padding-50">
-      <el-col :span="24">
-        <ul class="list">
+  <div class="bigWrapper">
+    <el-row class="wrapper" style="width: 100vw">
+      <el-col :span="24" style="width: 100vw">
+        <ul class="list" style="width: 100vw">
           <li class="logo"><i class="iconfont icon-kaoshi"></i><span>儿童癫痫知识诊疗系统</span></li>
           <li><router-link to="/" >首页</router-link></li>
           <li><router-link to="/myexam" @click="exam()">我的试卷</router-link></li>
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
           <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
-          <li style="right: 5vw;position: fixed;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
-          <li style="right: 12vw;position: fixed;"><router-link to="/" @click="login.logOut()">退出登录</router-link></li>
+          <li style="width: 30vw"></li>
+          <li style="right: 0.1vw;position: relative;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
+          <li style="right: 0.1vw;position: relative;"><router-link to="/" @click="login.logOut()">退出登录</router-link></li>
 
 <!--          <li class="right" @mouseenter="flag = !flag" @mouseleave="flag = !flag">-->
 <!--            <a href="javascript:;">-->
@@ -35,54 +35,60 @@
 .right .icon {
   margin-right: 6px;
 }
-#student{
+ .bigWrapper{
   top: 0;
   width: 100vw;
-  margin: 0 0 1vw 0;
+  margin: 1vw 0 1vw 0;
 }
-#student .padding-50 {
+ .bigWrapper .wrapper {
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 0 0 0;
   box-shadow: 0 0 10px 4px rgba(1,149,255,0.1);
   background-color: #fff;
 }
 .list a {
   text-decoration: none;
   color: #334046;
+
 }
 li {
   list-style: none;
-  height: 60px;
-  line-height: 60px;
+  height: 4.5vw;
+  line-height: 3vw;
 }
-#student .list{
+ .bigWrapper .list{
   display: flex;
+  width: 100vw;
 }
-#student .list li {
-  padding: 0 20px;
+ .bigWrapper .list li {
+  padding: 0 0.5vw 0 0.5vw;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2vw;
 }
-#student .list li:hover {
+ .bigWrapper .list li:hover {
   background-color: #0195ff;
   transition: all 2s ease;
 }
-#student .list li:hover a {
+ .bigWrapper .list li:hover a {
   color: #fff;
 }
-#student .list .right {
+ .bigWrapper .list .right {
   margin-left: auto;
   position: relative;
 }
-#student .list li.right :hover a {
+ .bigWrapper .list li.right :hover a {
   color: #000;
 }
-#student .list .logo {
+ .bigWrapper .list .logo {
   display: flex;
   font-weight: bold;
   color: #2f6c9f;
 }
-#student .list .logo i {
-  font-size: 50px;
+ .bigWrapper .list .logo i {
+  font-size: 2vw;
 }
 .right{
   position: fixed;
