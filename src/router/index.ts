@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import StudentScore from "@/views/StudentScore.vue";
-import WrongQuestionBook from "@/views/WrongQuestionBook.vue";
+import StudentScore from "@/views/hjd/StudentScore.vue";
+import WrongQuestionBook from "@/views/hjd/WrongQuestionBook.vue";
 import LoginView from "../views/LoginView.vue"
 import IndividualView from "@/views/Zjh/IndividualView.vue";
 import EditView from "@/views/Zjh/EditView.vue";
 import index from "@/components/ljk/headerView.vue"
 import home from "@/views/HomeView.vue"
+import WrongQuestionView from "@/views/hjd/WrongQuestionView.vue";
+import FillQuestionView from "@/components/hjd/FillQuestionView.vue";
+import JudgeQuestionView from "@/components/hjd/JudgeQuestionView.vue";
+import MultiQuestionView from "@/components/hjd/MultiQuestionView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -54,6 +58,28 @@ const router = createRouter({
       name: "examMsg",
       component: () => import("../views/zzw/ExamMsg.vue")
     },
+    {
+      path:'/wrongQuestionView',
+      name:"wrongQuestionView",
+      component:WrongQuestionView,
+      children:[
+        {
+          path:"fillQuestionView",
+          name:"fillQuestionVIew",
+          component:FillQuestionView
+        },
+        {
+          path:"judgeQuestionView",
+          name:"judgeQuestionView",
+          component:JudgeQuestionView
+        },
+        {
+          path:"multiQuestionView",
+          name:"multiQuestionView",
+          component:MultiQuestionView
+        }
+      ]
+    }
   ]
 })
 
