@@ -6,12 +6,12 @@
       <el-col :span="24">
         <ul class="list">
           <li class="logo"><i class="iconfont icon-kaoshi"></i><span>儿童癫痫知识诊疗系统</span></li>
-          <li><a href="/" >首页</a></li>
-          <li><a href="/myexam" @click="exam()">我的试卷</a></li>
+          <li><router-link to="/" >首页</router-link></li>
+          <li><router-link to="/myexam" @click="exam()">我的试卷</router-link></li>
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
-          <li><a href="/studentScore">我的分数</a></li>
-          <li><a href="/wrongQuestionBook">错题本</a></li>
-          <li style="right: 5vw;position: fixed;"><a href="/individual">个人中心</a></li>
+          <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
+          <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
+          <li style="right: 5vw;position: fixed;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
 
 <!--          <li class="right" @mouseenter="flag = !flag" @mouseleave="flag = !flag">-->
 <!--            <a href="javascript:;">-->
@@ -105,17 +105,11 @@ li {
 }
 </style>
 <script setup>
+import {useLoginStore} from "@/stores/UserInfo";
+let login=useLoginStore();
 import {ref} from "vue";
 let user=ref({})
 let flag=ref(false)
-function exit() {  //退出登录
-  this.$router.push({path:"/"}) //跳转到登录页面
-  this.$cookies.remove("cname") //清除cookie
-  this.$cookies.remove("cid")
-}
-function manage() {  //跳转到修改密码页面
-  this.$router.push({path: '/manager'})
-}
 function userInfo() {
   let studentName = this.$cookies.get("cname")
   let studentId = this.$cookies.get("cid")
@@ -124,12 +118,8 @@ function userInfo() {
   this.user.userName = studentName
   this.user.studentId = studentId
 }
-function practice() { //跳转练习模式
-  let isPractice = true
-  this.$store.commit("practice", isPractice)
-  this.$router.push({path:'/startExam'})
-}
 function exam() { //跳转考试模式
+  login.checkLogin()
   let isPractice = false
   this.$store.commit("practice", isPractice)
   this.$router.push({path:'/student'})

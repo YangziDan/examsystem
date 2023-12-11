@@ -2,15 +2,11 @@
 import IndividualHead from "@/components/Zjh/IndividualHead.vue";
 import InfoList from "@/components/Zjh/InfoList.vue";
 import {onMounted} from "vue";
-import cookies from "vue-cookies"
-import router from "@/router";
+import {useLoginStore} from "@/stores/UserInfo";
 import HeaderView from "@/components/ljk/headerView.vue";
 onMounted(()=>{
-  if(cookies.get('cid')==null|cookies.get('cid')==''){
-    router.push({
-      path:'/login'
-    })
-  }
+  let login=useLoginStore();
+  login.checkLogin()
 })
 </script>
 
