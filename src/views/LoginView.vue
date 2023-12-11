@@ -37,12 +37,16 @@ function login() {
         case "2": //学生
           cookies.set("cname", resData.studentName)
           cookies.set("cid", resData.studentId)
-          router.push({path: '/student'})
+          router.push({path: '/'})
           break
       }
     }
     if (resData == null) { //错误提示
       console.log("resData is null")
+      cookies.set("cname", '')
+      cookies.set("cid", '')
+      alert('登录失败!账户或密码错误')
+      router.push({path: '/'})
     }
   })
 }

@@ -1,8 +1,10 @@
 <script setup>
 import IndividualHead from "@/components/Zjh/IndividualHead.vue";
 import IndividualForm from "@/components/Zjh/IndividualForm.vue";
+import HeaderView from "@/components/ljk/headerView.vue";
 </script>
 <template>
+  <header-view></header-view>
   <div class="common-layout">
     <el-container>
       <el-header class="header">

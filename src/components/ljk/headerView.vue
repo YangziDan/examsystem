@@ -13,16 +13,16 @@
           <li><a href="/wrongQuestionBook">错题本</a></li>
           <li style="right: 5vw;position: fixed;"><a href="/individual">个人中心</a></li>
 
-          <li class="right" @mouseenter="flag = !flag" @mouseleave="flag = !flag">
-            <a href="javascript:;">
-              <i class="iconfont icon-Userselect icon"></i>
+<!--          <li class="right" @mouseenter="flag = !flag" @mouseleave="flag = !flag">-->
+<!--            <a href="javascript:;">-->
+<!--              <i class="iconfont icon-Userselect icon"></i>-->
 <!--              {{user.userName}}-->
-            </a>
-            <div class="msg" v-if="flag">
-              <p @click="manage()">管理中心</p>
-              <p class="exit" @click="exit()">退出</p>
-            </div>
-          </li>
+<!--            </a>-->
+<!--            <div class="msg" v-if="flag">-->
+<!--              <p @click="manage()">管理中心</p>-->
+<!--              <p class="exit" @click="exit()">退出</p>-->
+<!--            </div>-->
+<!--          </li>-->
         </ul>
       </el-col>
     </el-row>
@@ -83,11 +83,14 @@ li {
 #student .list .logo i {
   font-size: 50px;
 }
+.right{
+  position: fixed;
+  top: 0.6vw;
+  right: 3vw;
+}
 .right .msg {
+  width: 6vw;
   text-align: center;
-  position: absolute;
-  top: 60px;
-  left: 0px;
   display: flex;
   flex-direction: column;
   border-radius: 2px;
@@ -95,9 +98,7 @@ li {
   background-color: #fff;
 }
 .right .msg p {
-  height: 40px;
-  line-height: 40px;
-  width: 105px;
+
 }
 .right .msg p:hover {
   background-color: #0195ff;
