@@ -12,6 +12,7 @@
           <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
           <li style="right: 5vw;position: fixed;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
+          <li style="right: 12vw;position: fixed;"><router-link to="/" @click="login.logOut()">退出登录</router-link></li>
 
 <!--          <li class="right" @mouseenter="flag = !flag" @mouseleave="flag = !flag">-->
 <!--            <a href="javascript:;">-->
