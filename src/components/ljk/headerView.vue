@@ -11,6 +11,7 @@
           <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
           <li style="width: 30vw"></li>
+          <li class="avatar"><avatar></avatar></li>
           <li style="right: 0.1vw;position: relative;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
           <li style="right: 0.1vw;position: relative;"><router-link to="/" @click="login.logOut()">退出登录</router-link></li>
 
@@ -110,11 +111,16 @@ li {
 .right .msg p:hover {
   background-color: #0195ff;
 }
+.avatar{
+  display: flex;
+  margin-top: 0.6rem;
+}
 </style>
 <script setup>
 import {useLoginStore} from "@/stores/UserInfo";
 let login=useLoginStore();
 import {ref} from "vue";
+import Avatar from "@/components/Zjh/Avatar.vue";
 let user=ref({})
 let flag=ref(false)
 function userInfo() {

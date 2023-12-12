@@ -73,7 +73,8 @@ function save(){
       userName:store.UserName,
       userSex:store.UserSex,
       userPhone:store.UserPhone,
-      userSchool:store.UserSchool
+      userSchool:store.UserSchool,
+      userImg:store.UserImg
     }
   }).then(res=>{
     console.log(res.data)

@@ -9,7 +9,8 @@ export const useUserinfoStore = defineStore('UserInfo', {
                 UserPhone: "",
                 UserGrade: "",
                 UserSchool: "",
-                UserBirth: ""
+                UserBirth: "",
+                UserImg:""
             }
         },
         persist: true
