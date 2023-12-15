@@ -10,7 +10,7 @@
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
           <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
-          <li style="width: 30vw"></li>
+          <li style="width: 30vw" class="none"></li>
           <li class="avatar"><avatar></avatar></li>
           <li style="right: 0.1vw;position: relative;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>
           <li style="right: 0.1vw;position: relative;"><router-link to="/" @click="login.logOut()">退出登录</router-link></li>
@@ -33,9 +33,7 @@
 
 
 <style scoped>
-.right .icon {
-  margin-right: 6px;
-}
+.none{}
  .bigWrapper{
   top: 0;
   width: 100vw;
@@ -91,20 +89,7 @@ li {
  .bigWrapper .list .logo i {
   font-size: 2vw;
 }
-.right{
-  position: fixed;
-  top: 0.6vw;
-  right: 3vw;
-}
-.right .msg {
-  width: 6vw;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  border-radius: 2px;
-  border-bottom: 3px solid #0195ff;
-  background-color: #fff;
-}
+
 .right .msg p {
 
 }
