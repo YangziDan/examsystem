@@ -11,6 +11,8 @@ import FillQuestionView from "@/components/hjd/FillQuestionView.vue";
 import JudgeQuestionView from "@/components/hjd/JudgeQuestionView.vue";
 import MultiQuestionView from "@/components/hjd/MultiQuestionView.vue";
 import ScoreAnalysis from "@/views/hjd/ScoreAnalysis.vue";
+import TestView from "@/views/testView.vue"
+import manageView from "@/views/ljk/manageView.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -85,6 +87,15 @@ const router = createRouter({
       path:"/scoreAnalysis",
       name:"scoreAnalysis",
       component:ScoreAnalysis
+    },
+    {
+      path:'/test',
+      name:"test",
+      component:TestView,
+    },{
+      path:'/manage',
+      name:"manage",
+      component:manageView,
     }
   ]
 })
