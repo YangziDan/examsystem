@@ -24,6 +24,26 @@
         </template>
       </el-table-column>
     </el-table>
+    <div style="margin: 1vw 0 0 0 ">
+      <el-row :gutter="30">
+        <el-col :span="3">问题Id
+          <el-input v-model="questionId"></el-input>
+        </el-col>
+        <el-col :span="5">问题类型
+          <el-input v-model="questionType"></el-input>
+        </el-col>
+        <el-col :span="5">问题主题
+          <el-input v-model="questionSubject"></el-input>
+        </el-col>
+        <el-col :span="10">问题描述
+          <el-input v-model="questionDescription"></el-input>
+        </el-col>
+        <el-col :span="3">
+          <el-button class="comCol" style="margin-top: 2.8vh" type="success" @click="addQuestion()">新增试卷</el-button>
+        </el-col>
+
+      </el-row>
+    </div>
   </div>
 
 </template>
@@ -37,6 +57,21 @@ const route = useRoute()
 let id=route.params.id
 const search = ref('')
 let questions=ref([])
+
+let questionId=ref(123)
+let questionType = ref('选择题')
+let questionSubject = ref('主题')
+let questionDescription = ref('描述')
+function addQuestion(){
+  axios.post('http://localhost:8999/examManage/exam',{
+    'paperId':paperId.value,
+    'source':paperName.value,
+    'description':paperDescription.value,
+    'totalTime':paperTotalTime.value
+  }).then(res=>{
+    console.log('addPaper post response is '+res.data)
+  })
+}
 axios.get('http://localhost:8999/paperManage/paper/'+id).then(res => {
   let data = res.data
   let temp=Object()
@@ -80,5 +115,9 @@ const filterTableData = computed(() =>
 </script>
 
 <style scoped>
-
+.comCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

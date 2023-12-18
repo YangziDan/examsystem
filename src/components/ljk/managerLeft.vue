@@ -1,7 +1,7 @@
 <template>
   <el-row style="margin: 0 0 0 0">
     <el-col >
-      <h4 class="title">儿童癫痫知识诊疗系统</h4>
+      <h4 class="title" @click="()=>{router.push({path:'/'})}">儿童癫痫知识诊疗系统</h4>
       <el-menu
           default-active="2"
 
