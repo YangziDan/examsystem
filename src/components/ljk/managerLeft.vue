@@ -1,26 +1,26 @@
 <template>
-  <el-row class="tac">
-    <el-col :span="12">
+  <el-row style="margin: 0 0 0 0">
+    <el-col >
       <h4 class="title">儿童癫痫知识诊疗系统</h4>
       <el-menu
           default-active="2"
-          class="el-menu-vertical-demo"
+
           @open="handleOpen"
           @close="handleClose"
       >
-        <el-menu-item index="1" @click="handleTitle()">
+        <el-menu-item>
           <el-icon><UserFilled /></el-icon>
           <span>个人中心</span>
         </el-menu-item>
-        <el-menu-item index="2">
-          <el-icon><Management /></el-icon>
-          <span>题库管理</span>
+        <el-menu-item  @click="handleTitle('/paperManage')">
+          <el-icon><Document /></el-icon>
+          <span>试卷管理</span>
         </el-menu-item>
-        <el-menu-item index="3" >
+        <el-menu-item >
           <el-icon><PieChart /></el-icon>
           <span>学习用户进度</span>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item >
           <el-icon><DataAnalysis /></el-icon>
           <span>考试数据</span>
         </el-menu-item>
@@ -28,7 +28,6 @@
           <el-icon><MoreFilled /></el-icon>
           <span>关于</span>
         </el-menu-item>
-
         <el-menu-item >
           <el-icon><setting /></el-icon>
           <span>设置</span>
@@ -42,7 +41,7 @@
 import {useRouter} from "vue-router";
 
 const router=useRouter()
-const parentUrl='/test'
+const parentUrl='/manage'
 function handleTitle(index){
   router.push({path:parentUrl+index})
 }
@@ -56,6 +55,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 
 <style scoped>
+
 .title {
   display: flex;
   justify-content: center;

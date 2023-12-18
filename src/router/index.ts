@@ -7,12 +7,14 @@ import EditView from "@/views/Zjh/EditView.vue";
 import index from "@/components/ljk/headerView.vue"
 import home from "@/views/HomeView.vue"
 import WrongQuestionView from "@/views/hjd/WrongQuestionView.vue";
-import FillQuestionView from "@/components/hjd/FillQuestionView.vue";
-import JudgeQuestionView from "@/components/hjd/JudgeQuestionView.vue";
-import MultiQuestionView from "@/components/hjd/MultiQuestionView.vue";
+import FillQuestionView from "@/components/ljk/manager/FillQuestionView.vue";
+import JudgeQuestionView from "@/components/ljk/manager/JudgeQuestionView.vue";
+import MultiQuestionView from "@/components/ljk/manager/MultiQuestionView.vue";
 import ScoreAnalysis from "@/views/hjd/ScoreAnalysis.vue";
 import TestView from "@/views/testView.vue"
 import manageView from "@/views/ljk/manageView.vue"
+import questionManage from "@/components/ljk/manager/questionManage.vue"
+import paperManage from "@/components/ljk/manager/paperManage.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -96,6 +98,18 @@ const router = createRouter({
       path:'/manage',
       name:"manage",
       component:manageView,
+      children:[
+        {
+          path:"questionManage/:id",
+          name:"questionManage",
+          component:questionManage,
+        },
+        {
+          path:"paperManage",
+          name:"paperManage",
+          component:paperManage
+        }
+      ]
     }
   ]
 })

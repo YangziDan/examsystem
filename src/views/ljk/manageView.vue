@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <el-container>
-      <el-aside width="35vw">
-        <manager-left></manager-left>
+      <el-aside >
+        <manager-left style="width: 15vw"></manager-left>
       </el-aside>
       <el-container>
         <el-header>
