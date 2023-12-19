@@ -1,10 +1,12 @@
 <template>
   <div>
     <el-table :data="filterTableData" height="70vh" style="width: 100%;margin: 1vw 0 0 0">
-      <el-table-column prop="id" label="问题ID" width="180"/>
-      <el-table-column prop="type" label="问题类型" width="180"/>
-      <el-table-column prop="subject" label="问题主题" width="180"/>
-      <el-table-column prop="question" label="问题描述" width="180"/>
+      <el-table-column prop="id" label="问题ID" width="80"/>
+      <el-table-column prop="type" label="问题类型" width="80"/>
+      <el-table-column prop="subject" label="问题主题" width="100"/>
+      <el-table-column prop="question" label="问题描述" width="222"/>
+      <el-table-column prop="answer" label="问题选项" width="222"/>
+
       <el-table-column align="right">
         <template #header>
           <el-input v-model="search" size="small" placeholder="Type to search"/>
@@ -35,7 +37,7 @@
         <el-col :span="5">问题主题
           <el-input v-model="questionSubject"></el-input>
         </el-col>
-        <el-col :span="10">问题描述
+        <el-col :span="8">问题描述
           <el-input v-model="questionDescription"></el-input>
         </el-col>
         <el-col :span="3">
@@ -62,6 +64,7 @@ let questionId=ref(123)
 let questionType = ref('选择题')
 let questionSubject = ref('主题')
 let questionDescription = ref('描述')
+let questionChoice = ref('选择')
 function addQuestion(){
   axios.post('http://localhost:8999/examManage/exam',{
     'paperId':paperId.value,
@@ -83,6 +86,7 @@ axios.get('http://localhost:8999/paperManage/paper/'+id).then(res => {
     temp.id=cur[i].questionId
     temp.subject=cur[i].subject
     temp.question=cur[i].question
+    temp.answer=cur[i].answer
     questions.value.push(temp)
   }
   cur=data[2]
@@ -92,6 +96,7 @@ axios.get('http://localhost:8999/paperManage/paper/'+id).then(res => {
     temp.id=cur[i].questionId
     temp.subject=cur[i].subject
     temp.question=cur[i].question
+    temp.answer=cur[i].answer
     questions.value.push(temp)
   }
   cur=data[3]
@@ -101,6 +106,7 @@ axios.get('http://localhost:8999/paperManage/paper/'+id).then(res => {
     temp.id=cur[i].questionId
     temp.subject=cur[i].subject
     temp.question=cur[i].question
+    temp.answer=cur[i].answer
     questions.value.push(temp)
   }
   console.log("questions is "+questions.value)
@@ -112,6 +118,9 @@ const filterTableData = computed(() =>
             questions.question.toLowerCase().includes(search.value.toLowerCase())
     )
 )
+function handleDelete(index, row){
+  row.id
+}
 </script>
 
 <style scoped>

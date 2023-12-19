@@ -26,7 +26,7 @@ function login() {
           cookies.set("cname", resData.adminName)
           cookies.set("cid", resData.adminId)
           cookies.set("role", 0)
-          router.push({path: '/manage'}) //跳转到首页
+          router.push({path: '/manage/paperManage'}) //跳转到首页
           break
         case "2": //学生
           cookies.set("cname", resData.studentName)
