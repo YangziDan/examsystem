@@ -112,8 +112,6 @@ let flag=ref(false)
 function userInfo() {
   let studentName = this.$cookies.get("cname")
   let studentId = this.$cookies.get("cid")
-  console.log(`studentId${studentId}`)
-  console.log(`studentName ${studentName}`)
   this.user.userName = studentName
   this.user.studentId = studentId
 }

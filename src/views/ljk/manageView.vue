@@ -10,7 +10,7 @@
             管理员后台界面
           </p>
         </el-header>
-        <el-main>
+        <el-main style="padding-top: 6vh">
           <router-view></router-view>
         </el-main>
       </el-container>
@@ -38,6 +38,7 @@ import ManagerLeft from "@/components/ljk/managerLeft.vue";
   font-weight: bold;
   color: #2f6c9f;
   height: 7vw;
+  font-size: 1.3vw;
 }
 
 

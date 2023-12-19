@@ -13,7 +13,6 @@ import Chart from "@/components/ljk/manager/comp/manageChart.vue";
 let scores=ref([])
 axios.get('http://localhost:8999/score/getAllScore').then(res=>{
   scores.value=res.data
-  console.log(scores.value)
 })
 </script>
 

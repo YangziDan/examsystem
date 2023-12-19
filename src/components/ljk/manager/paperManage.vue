@@ -1,12 +1,12 @@
 <template>
-  <div style="width: 100%;margin: 1vw 0 0 0;height: 75vh">
+  <div style="width: 71vw;margin: 2vw 0 0 0;height: 70vh" class="wrapper">
     <div>
-      <el-table :data="filterTableData" height="68vh" style="width: 100%;">
-        <el-table-column prop="id" label="试卷ID" width="180"/>
-        <el-table-column prop="name" label="试卷名字" width="180"/>
-        <el-table-column prop="description" label="试卷描述" width="180"/>
+      <el-table :data="filterTableData" height="65vh" style="width: 100%;">
+        <el-table-column prop="id" label="试卷ID" width="120"/>
+        <el-table-column prop="name" label="试卷名字" width="150"/>
+        <el-table-column prop="description" label="试卷描述" width="480"/>
         <el-table-column prop="totalTime" label="试卷限时/min" width="180"/>
-        <el-table-column align="right">
+        <el-table-column align="right" width="300">
           <template #header>
             <el-input v-model="search" size="small" placeholder="Type to search"/>
           </template>
@@ -69,7 +69,6 @@ function addPaper(){
     'description':paperDescription.value,
     'totalTime':paperTotalTime.value
   }).then(res=>{
-    console.log('addPaper post response is '+res.data)
   })
 }
 axios.get('http://localhost:8999/examManage/exams').then(res => {
@@ -93,13 +92,11 @@ const filterTableData = computed(() =>
 )
 const handleEdit = (index: number, row) => {
   let id = row.id
-  router.push({path: '/manage/questionManage' + '/' + id})
-  // console.log(index, row)
+  router.push({path: '/manage/questionManage' + '/' + id+'/commonQuestion'})
 
 }
 const handleDelete = (index: number, row) => {
   axios.delete('http://localhost:8999/examManage/exam/paper/'+row.id)
-  // console.log(index, row)
 }
 
 // let tableData : paper[] = [
@@ -121,6 +118,12 @@ const handleDelete = (index: number, row) => {
 // ]
 </script>
 <style scoped>
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .comCol {
   display: flex;
   align-items: center;

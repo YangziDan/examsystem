@@ -18,13 +18,13 @@
           <el-icon><DataAnalysis /></el-icon>
           <span>考试数据</span>
         </el-menu-item>
-        <el-menu-item >
-          <el-icon><PieChart /></el-icon>
-          <span>学习用户数据</span>
-        </el-menu-item>
         <el-menu-item @click="handleTitle('/manageIndividual')">
           <el-icon><UserFilled /></el-icon>
           <span>个人中心</span>
+        </el-menu-item>
+        <el-menu-item >
+          <el-icon><PieChart /></el-icon>
+          <span>学习用户数据</span>
         </el-menu-item>
         <el-menu-item >
           <el-icon><MoreFilled /></el-icon>
@@ -52,10 +52,8 @@ function handleTitle(index){
 
 
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
 }
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
 }
 </script>
 

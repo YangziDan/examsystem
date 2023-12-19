@@ -26,7 +26,7 @@ const username = ref("")
 .mainheader {
   height: 13rem;
   width: 60rem;
-  background-image: url("src/assets/img/individual-header.png");
+  background-image: url("manage-header.png");
   display: flex;
   flex-direction: row;
   margin-left: 7rem;

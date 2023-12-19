@@ -16,6 +16,8 @@ import manageView from "@/views/ljk/manageView.vue"
 import questionManage from "@/components/ljk/manager/questionManage.vue"
 import paperManage from "@/components/ljk/manager/paperManage.vue"
 import examData from "@/components/ljk/manager/examData.vue"
+import multiQuestion from "@/components/ljk/manager/comp/multiQuestion.vue"
+import commonQuestion from "@/components/ljk/manager/comp/commonQuestion.vue"
 import ManageIndividualView from "@/views/Zjh/ManageIndividualView.vue";
 import ManageEditView from "@/views/Zjh/ManageEditView.vue";
 const router = createRouter({
@@ -106,6 +108,18 @@ const router = createRouter({
           path:"questionManage/:id",
           name:"questionManage",
           component:questionManage,
+          children:[
+            {
+              path:"multiQuestion",
+              name:"multiQuestion",
+              component:multiQuestion,
+            },
+            {
+              path:"commonQuestion",
+              name:"commonQuestion",
+              component:commonQuestion,
+            }
+          ]
         },
         {
           path:"paperManage",

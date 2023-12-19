@@ -16,13 +16,12 @@ onMounted(() => {
 });
 
 watch(() => scoreList.score, (newScoreList) => {
-  console.log(newScoreList)
+
   count90to100.value = newScoreList.filter((score) => score.etScore >= 90 && score.etScore <= 100).length;
   count80to90.value = newScoreList.filter((score) => score.etScore >= 80 && score.etScore < 90).length;
   count70to80.value = newScoreList.filter((score) => score.etScore >= 70 && score.etScore < 80).length;
   count60to70.value = newScoreList.filter((score) => score.etScore >= 60 && score.etScore < 70).length;
   countBelow60.value = newScoreList.filter((score) => score.etScore < 60).length;
-console.log(count70to80.value)
   init();
 });
 

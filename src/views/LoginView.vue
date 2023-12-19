@@ -25,12 +25,14 @@ function login() {
         case "0":  //管理员
           cookies.set("cname", resData.adminName)
           cookies.set("cid", resData.adminId)
+          cookies.set("type",'admin')
           cookies.set("role", 0)
           router.push({path: '/manage/paperManage'}) //跳转到首页
           break
-        case "2": //学生
+        case "2": //用户
           cookies.set("cname", resData.studentName)
           cookies.set("cid", resData.studentId)
+          cookies.set("type",'student')
           router.push({path: '/'})
           break
       }
