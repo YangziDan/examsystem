@@ -16,6 +16,8 @@ import manageView from "@/views/ljk/manageView.vue"
 import questionManage from "@/components/ljk/manager/questionManage.vue"
 import paperManage from "@/components/ljk/manager/paperManage.vue"
 import examData from "@/components/ljk/manager/examData.vue"
+import ManageIndividualView from "@/views/Zjh/ManageIndividualView.vue";
+import ManageEditView from "@/views/Zjh/ManageEditView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -114,9 +116,21 @@ const router = createRouter({
           path:"examData",
           name:"examData",
           component:examData
+        },
+        {
+          path: "manageIndividual",
+          name: "manageIndividual",
+          component: ManageIndividualView
+        },
+        {
+          path:"manageEdit",
+          name:"manageEdit",
+          component: ManageEditView
         }
+
       ]
     }
+
   ]
 })
 

@@ -13,8 +13,7 @@
           <template #default="scope">
             <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
             >Edit
-            </el-button
-            >
+            </el-button>
             <el-button
                 size="small"
                 type="danger"

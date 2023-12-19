@@ -22,7 +22,7 @@
           <el-icon><PieChart /></el-icon>
           <span>学习用户数据</span>
         </el-menu-item>
-        <el-menu-item>
+        <el-menu-item @click="handleTitle('/manageIndividual')">
           <el-icon><UserFilled /></el-icon>
           <span>个人中心</span>
         </el-menu-item>
@@ -41,12 +41,16 @@
 
 <script lang="ts" setup>
 import {useRouter} from "vue-router";
+import {push} from "echarts/types/src/component/dataZoom/history";
+import {DataAnalysis, Document, MoreFilled, PieChart, Setting, UserFilled} from "@element-plus/icons-vue";
 
 const router=useRouter()
 const parentUrl='/manage'
 function handleTitle(index){
   router.push({path:parentUrl+index})
 }
+
+
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }

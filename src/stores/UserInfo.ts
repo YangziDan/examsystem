@@ -10,7 +10,13 @@ export const useUserinfoStore = defineStore('UserInfo', {
                 UserGrade: "",
                 UserSchool: "",
                 UserBirth: "",
-                UserImg:""
+                UserImg:"",
+                ManageName:"",
+                ManagePhone:"",
+                ManagePwd:"",
+                ManageSex:"",
+                ManageEmail:"",
+                ManageCard:""
             }
         },
         persist: true
