@@ -8,21 +8,23 @@
           @open="handleOpen"
           @close="handleClose"
       >
-        <el-menu-item>
-          <el-icon><UserFilled /></el-icon>
-          <span>个人中心</span>
-        </el-menu-item>
+
         <el-menu-item  @click="handleTitle('/paperManage')">
           <el-icon><Document /></el-icon>
           <span>试卷管理</span>
         </el-menu-item>
-        <el-menu-item >
-          <el-icon><PieChart /></el-icon>
-          <span>学习用户进度</span>
-        </el-menu-item>
-        <el-menu-item >
+
+        <el-menu-item  @click="handleTitle('/examData')">
           <el-icon><DataAnalysis /></el-icon>
           <span>考试数据</span>
+        </el-menu-item>
+        <el-menu-item >
+          <el-icon><PieChart /></el-icon>
+          <span>学习用户数据</span>
+        </el-menu-item>
+        <el-menu-item>
+          <el-icon><UserFilled /></el-icon>
+          <span>个人中心</span>
         </el-menu-item>
         <el-menu-item >
           <el-icon><MoreFilled /></el-icon>

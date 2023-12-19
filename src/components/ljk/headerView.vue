@@ -10,6 +10,7 @@
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
           <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
+          <li><router-link to="/scoreAnalysis" @click="login.checkLogin()">成绩分析</router-link></li>
           <li style="width: 30vw" class="none"></li>
           <li class="avatar"><avatar></avatar></li>
           <li style="right: 0.1vw;position: relative;"><router-link to="/individual" @click="login.checkLogin()">个人中心</router-link></li>

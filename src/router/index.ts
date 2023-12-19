@@ -15,6 +15,7 @@ import TestView from "@/views/testView.vue"
 import manageView from "@/views/ljk/manageView.vue"
 import questionManage from "@/components/ljk/manager/questionManage.vue"
 import paperManage from "@/components/ljk/manager/paperManage.vue"
+import examData from "@/components/ljk/manager/examData.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -108,6 +109,11 @@ const router = createRouter({
           path:"paperManage",
           name:"paperManage",
           component:paperManage
+        },
+        {
+          path:"examData",
+          name:"examData",
+          component:examData
         }
       ]
     }
