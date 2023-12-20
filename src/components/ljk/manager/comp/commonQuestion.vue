@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="filterTableData" height="62vh" style="width: 100%;margin-top: 2vh">
+  <el-table :data="filterTableData" height="58vh" style="width: 100%;margin-top: 2vh">
     <el-table-column prop="id" label="问题ID" width="80"/>
     <el-table-column prop="type" label="问题类型" width="80"/>
     <el-table-column prop="subject" label="问题主题" width="100"/>

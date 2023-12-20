@@ -10,8 +10,7 @@
         </el-icon>
       </el-button>
     </el-button-group>
-    <router-view></router-view>
-
+    <router-view style= "padding-top: 2vh;height: 45vh"></router-view>
   </div>
 
 </template>

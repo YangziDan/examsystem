@@ -10,8 +10,8 @@
             管理员后台界面
           </p>
         </el-header>
-        <el-main style="padding-top: 6vh">
-          <router-view></router-view>
+        <el-main >
+          <router-view style="padding-top: 6vh;height: 50vh"></router-view>
         </el-main>
       </el-container>
     </el-container>
