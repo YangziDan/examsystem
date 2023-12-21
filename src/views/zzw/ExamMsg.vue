@@ -6,49 +6,60 @@
         </div>
         <!--考试信息-->
         <div class="wrapper">
+            <!--试卷信息-->
             <ul class="top">
                 <div class="example">{{ examData.source }}</div>
                 <div><i class="iconfont icon-pen-"></i></div>
                 <div><i class="iconfont icon-share"></i></div>
-                <div class="right">
-                    <div>
-                        <span class="count">总分</span>
-                        <span class="score">{{ score[0] + score[1] + score[2] }}</span>
-                    </div>
-                </div>
+<!--                <div class="right">-->
+<!--                    <div>-->
+<!--                        <span class="count">总分</span>-->
+<!--                        <span class="score">{{ score[0] + score[1] + score[2] }}</span>-->
+<!--                    </div>-->
+<!--                </div>-->
             </ul>
             <ul class="bottom">
                 <div>更新于{{ examData.examDate }}</div>
                 <div>来自 {{ examData.institute }}</div>
-<!--                <div class="btn">{{ examData.type }}</div>-->
+                <!-- <div class="btn">{{ examData.type }}</div>-->
                 <div class="btn">xxx</div>
                 <div class="right">
-                    <el-button @cdivck="toAnswer(examData.examCode)">开始答题</el-button>
+                    <el-button @click="toAnswer(examData.examCode)">开始答题</el-button>
                 </div>
             </ul>
+
+            <!--考生须知对话框-->
             <ul class="info">
-                <div @cdivck="dialogVisible = true">
-                    <a href="javascript:;">
+                <div @click="dialogVisible = true">
+                    <a href="javascript:">
                         <i class="iconfont icon-info"></i>考生须知
                     </a>
                 </div>
             </ul>
+            <el-dialog title="考生须知" v-model="dialogVisible" width="30%">
+                <span>{{ examData.tips }}</span>
+                <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="dialogVisible = false"
+                           style="margin-top: 2vh">知道了
+                </el-button>
+            </span>
+            </el-dialog>
         </div>
+
         <!--试卷内容-->
         <div class="content">
-            <el-collapse v-model="activeName">
+            <el-collapse v-model="activeNames">
                 <el-collapse-item class="header" name="0">
-                    <template slot="title" class="stitle">
+                    <template #title>
                         <div class="title">
-              <span>{{ examData.source }}</span
-              ><i class="header-icon el-icon-info"></i>
+                            <span>{{ examData.source }}</span><i class="header-icon el-icon-info"></i>
                             <span class="time">{{ examData.totalScore }}分 / {{ examData.totalTime }}分钟</span>
-                            <el-button type="primary" size="small">点击查看试题详情</el-button>
+                            <el-button type="primary">查看试题详情</el-button>
                         </div>
                     </template>
                     <el-collapse class="inner">
-                        <el-collapse-item>
-                            <template slot="title" name="1">
+                        <el-collapse-item name="1">
+                            <template #title>
                                 <div class="titlei">选择题 (共{{ topicCount[0] }}题 共计{{ score[0] }}分)</div>
                             </template>
                             <div class="contenti">
@@ -57,8 +68,8 @@
                                 </ul>
                             </div>
                         </el-collapse-item>
-                        <el-collapse-item>
-                            <template slot="title" name="2">
+                        <el-collapse-item name="2">
+                            <template #title>
                                 <div class="titlei">填空题 (共{{ topicCount[1] }}题 共计{{ score[1] }}分)</div>
                             </template>
                             <div class="contenti">
@@ -67,8 +78,8 @@
                                 </ul>
                             </div>
                         </el-collapse-item>
-                        <el-collapse-item>
-                            <template slot="title" name="3">
+                        <el-collapse-item name="3">
+                            <template #title>
                                 <div class="titlei">判断题 (共{{ topicCount[2] }}题 共计{{ score[2] }}分)</div>
                             </template>
                             <div class="contenti">
@@ -83,42 +94,40 @@
                 </el-collapse-item>
             </el-collapse>
         </div>
-        <!--考生须知对话框-->
-        <el-dialog title="考生须知" :visible.sync="dialogVisible" width="30%">
-            <span>{{ examData.tips }}</span>
-            <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">知道了</el-button>
-      </span>
-        </el-dialog>
+
     </div>
 </template>
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue';
 import axios from 'axios'
+import {useRoute} from "vue-router";
+import router from "@/router";
 
 const dialogVisible = ref(false);
-const activeName = ref('0');
+const activeNames = ref([]);
 const topicCount = ref<number[]>([]);
 const score = ref<number[]>([]);
 const examData = ref<any>({});
 const topic = ref<any>({});
+const route = useRoute()
 
 onMounted(() => {
     init();
 });
 
 const init = () => {
-    // const examCode = $route.query.examCode;
-    const examCode = 20190001;
+    const examCode = route.query.examCode;
+    // const examCode = 20190001;
     axios.get(`http://localhost:8999/examManage/exam/${examCode}`).then((res) => {
-        console.log(res)
+        // console.log("@")
+        console.log({...res.data.data})
         res.data.data.examDate = res.data.data.examDate.substr(0, 10);
-        examData.value = { ...res.data.data };
+        examData.value = {...res.data.data};
         const paperId = examData.value.paperId;
         axios(`http://localhost:8999/paperManage/paper/${paperId}`).then((res) => {
-            console.log(res)
-            topic.value = { ...res.data };
+            // console.log({...res.data})
+            topic.value = {...res.data};
             const keys = Object.keys(topic.value);
             keys.forEach((e) => {
                 const data = topic.value[e];
@@ -134,11 +143,13 @@ const init = () => {
 };
 
 const toAnswer = (id) => {
-    // $router.push({ path: '/answer', query: { examCode: id } });
+    console.log(id)
+    router.push({path: '/answer', query: {examCode: id}});
 };
 </script>
 
 <style scoped>
+
 .bottom .el-button {
     color: #409EFF;
     border-color: #c6e2ff;
@@ -181,7 +192,6 @@ const toAnswer = (id) => {
     margin: 0px;
     display: flex;
     align-items: center;
-
 }
 
 .content {

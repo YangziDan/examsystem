@@ -1,7 +1,7 @@
 <template>
-  <header-view></header-view>
+    <header-view></header-view>
     <div id="myExam">
-<!--        <div class="title">我的试卷</div>-->
+        <!--        <div class="title">我的试卷</div>-->
         <div class="wrapper">
             <ul class="top">
                 <li class="order">试卷列表</li>
@@ -21,8 +21,10 @@
                     <el-button type="primary" @click="search()">搜索试卷</el-button>
                 </li>
             </ul>
+
+            <!-- 试卷列表-->
             <ul class="paper" v-loading="loading">
-                <li class="item" v-for="(item, index) in pagination.records" :key="index">
+                <ul class="item" v-for="(item, index) in pagination.records" :key="index">
                     <h4 @click="toExamMsg(item.examCode)">{{ item.source }}</h4>
                     <p class="name">{{ item.source }}-{{ item.description }}</p>
                     <div class="info">
@@ -32,8 +34,9 @@
                         }}分钟</span>
                         <i class="iconfont icon-fenshu"></i><span>满分{{ item.totalScore }}分</span>
                     </div>
-                </li>
+                </ul>
             </ul>
+
             <!--分页-->
             <div class="pagination">
                 <el-pagination
@@ -54,6 +57,7 @@
 import {ref, onMounted} from 'vue';
 import HeaderView from "@/components/ljk/headerView.vue";
 import axios from 'axios'
+import router from "@/router";
 
 
 const loading = ref(false);
@@ -75,15 +79,14 @@ onMounted(() => {
 const getExamInfo = () => {
     // Replace this with your actual axios call
     axios(`http://localhost:8999/examManage/exams/${pagination.value.current}/${pagination.value.size}`)
-      .then((res) => {
-          console.log(res)
-        pagination.value = res.data.data;
-        loading.value = false;
-        console.log(pagination.value);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((res) => {
+            pagination.value = res.data.data;
+            loading.value = false;
+            console.log(res.data.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 };
 
 //改变当前记录条数
@@ -100,26 +103,38 @@ const handleCurrentChange = (val) => {
 
 //搜索试卷
 const search = () => {
-    // Replace this with your actual axios call
-    // this.$axios('/api/exams').then((res) => {
-    //   if (res.data.code == 200) {
-    //     let allExam = res.data.data;
-    //     let newPage = allExam.filter((item) => {
-    //       return item.source.includes(key.value);
-    //     });
-    //     pagination.value.records = newPage;
-    //   }
-    // });
+    axios('http://localhost:8999/examManage/exams').then((res) => {
+        if (res.data.code == 200) {
+            let allExam = res.data.data;
+            let newPage = allExam.filter((item) => {
+                return item.source.includes(key.value);
+            });
+            pagination.value.records = newPage;
+        }
+    });
 };
 
 //跳转到试卷详情页
 const toExamMsg = (examCode) => {
-    // this.$router.push({ path: '/examMsg', query: { examCode: examCode } });
-    console.log(examCode);
+    // console.log(examCode)
+    router.push({path: '/examMsg', query: {examCode: examCode}});
 };
 </script>
 
 <style scoped>
+#myExam{
+    background-color: #eee;
+}
+a {
+    text-decoration: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
 .pagination {
     padding: 20px 0px 30px 0px;
 }
