@@ -74,6 +74,11 @@ const router = createRouter({
       component: () => import("../views/zzw/AnswerScore.vue")
     },
     {
+      path: '/scoreTable',
+      name: 'scoreTable',
+      component: () => import("../views/zzw/scoreTable.vue")
+    },
+    {
       path:'/answer',
       name: 'answer',
       component: () => import("../views/zzw/Answer.vue")
