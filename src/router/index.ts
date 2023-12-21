@@ -10,6 +10,16 @@ import WrongQuestionView from "@/views/hjd/WrongQuestionView.vue";
 import FillQuestionView from "@/components/hjd/FillQuestionView.vue";
 import JudgeQuestionView from "@/components/hjd/JudgeQuestionView.vue";
 import MultiQuestionView from "@/components/hjd/MultiQuestionView.vue";
+import ScoreAnalysis from "@/views/hjd/ScoreAnalysis.vue";
+import TestView from "@/views/testView.vue"
+import manageView from "@/views/ljk/manageView.vue"
+import questionManage from "@/components/ljk/manager/questionManage.vue"
+import paperManage from "@/components/ljk/manager/paperManage.vue"
+import examData from "@/components/ljk/manager/examData.vue"
+import multiQuestion from "@/components/ljk/manager/comp/multiQuestion.vue"
+import commonQuestion from "@/components/ljk/manager/comp/commonQuestion.vue"
+import ManageIndividualView from "@/views/Zjh/ManageIndividualView.vue";
+import ManageEditView from "@/views/Zjh/ManageEditView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -89,7 +99,62 @@ const router = createRouter({
           component:MultiQuestionView
         }
       ]
+    },
+    {
+      path:"/scoreAnalysis",
+      name:"scoreAnalysis",
+      component:ScoreAnalysis
+    },
+    {
+      path:'/test',
+      name:"test",
+      component:TestView,
+    },{
+      path:'/manage',
+      name:"manage",
+      component:manageView,
+      children:[
+        {
+          path:"questionManage/:id",
+          name:"questionManage",
+          component:questionManage,
+          children:[
+            {
+              path:"multiQuestion",
+              name:"multiQuestion",
+              component:multiQuestion,
+            },
+            {
+              path:"commonQuestion",
+              name:"commonQuestion",
+              component:commonQuestion,
+            }
+          ]
+        },
+        {
+          path:"paperManage",
+          name:"paperManage",
+          component:paperManage
+        },
+        {
+          path:"examData",
+          name:"examData",
+          component:examData
+        },
+        {
+          path: "manageIndividual",
+          name: "manageIndividual",
+          component: ManageIndividualView
+        },
+        {
+          path:"manageEdit",
+          name:"manageEdit",
+          component: ManageEditView
+        }
+
+      ]
     }
+
   ]
 })
 

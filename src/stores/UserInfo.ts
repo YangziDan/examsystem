@@ -10,7 +10,13 @@ export const useUserinfoStore = defineStore('UserInfo', {
                 UserGrade: "",
                 UserSchool: "",
                 UserBirth: "",
-                UserImg:""
+                UserImg:"",
+                ManageName:"",
+                ManagePhone:"",
+                ManagePwd:"",
+                ManageSex:"",
+                ManageEmail:"",
+                ManageCard:""
             }
         },
         persist: true
@@ -23,6 +29,12 @@ export const useLoginStore = defineStore('login', () => {
                     path: '/login'
                 })
             }
+            else if(cookies.get('type')=='admin'){
+                router.push({
+                    path: '/manage/manageIndividual'
+                })
+            }
+
         }
         function isLogin(){
             if(cookies.get('cid') == null | cookies.get('cid') == '')
@@ -33,6 +45,7 @@ export const useLoginStore = defineStore('login', () => {
         function logOut(){
             cookies.set('cid','')
             cookies.set('cname','')
+            cookies.set('type','')
             router.push({
                 path: '/'
             })

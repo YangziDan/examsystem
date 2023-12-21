@@ -25,18 +25,14 @@ function login() {
         case "0":  //管理员
           cookies.set("cname", resData.adminName)
           cookies.set("cid", resData.adminId)
+          cookies.set("type",'admin')
           cookies.set("role", 0)
-          router.push({path: '/'}) //跳转到首页
+          router.push({path: '/manage/paperManage'}) //跳转到首页
           break
-        case "1": //教师
-          cookies.set("cname", resData.teacherName)
-          cookies.set("cid", resData.teacherId)
-          cookies.set("role", 1)
-          router.push({path: '/'}) //跳转到教师用户
-          break
-        case "2": //学生
+        case "2": //用户
           cookies.set("cname", resData.studentName)
           cookies.set("cid", resData.studentId)
+          cookies.set("type",'student')
           router.push({path: '/'})
           break
       }
@@ -93,8 +89,7 @@ function clickTag(key) {
     </el-row>
     <section class="remind">
       <span>管理员账号：2023</span>
-      <span>教师账号：2022</span>
-      <span>密码都是：123456</span>
+      <span>密码：123456</span>
     </section>
   </div>
 </template>
