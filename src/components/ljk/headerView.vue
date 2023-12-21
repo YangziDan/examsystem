@@ -8,7 +8,7 @@
           <li><router-link to="/" >首页</router-link></li>
           <li><router-link to="/myexam" @click="exam()">我的试卷</router-link></li>
 <!--          <li><a href="javascript:;" @click="practice()">我的练习</a></li>-->
-          <li><router-link to="/studentScore" @click="login.checkLogin()">我的分数</router-link></li>
+          <li><router-link to="/scoreTable" @click="login.checkLogin()">我的分数</router-link></li>
           <li><router-link to="/wrongQuestionBook" @click="login.checkLogin()">错题本</router-link></li>
           <li><router-link to="/scoreAnalysis" @click="login.checkLogin()">成绩分析</router-link></li>
           <li style="width: 30vw" class="none"></li>
