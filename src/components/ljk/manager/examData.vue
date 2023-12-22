@@ -11,8 +11,8 @@ import axios from "axios";
 import {computed, ref} from "vue";
 import Chart from "@/components/ljk/manager/comp/manageChart.vue";
 let scores=ref([])
-axios.get('http://localhost:8999/score/getAllScore').then(res=>{
-  scores.value=res.data
+axios.get('http://localhost:8999/score/scores').then(res=>{
+  scores.value=res.data.data
 })
 </script>
 

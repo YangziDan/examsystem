@@ -3,6 +3,7 @@ import {ref} from "vue";
 import axios from "axios";
 import cookies from "vue-cookies"
 import router from "@/router";
+import {ElMessage} from "element-plus";
 let role = ref(2);
 let labelPosition = ref('left');
 let formLabelAlign = ref({
@@ -36,7 +37,7 @@ function login() {
           router.push({path: '/'})
           break
       }
-      alert('登录成功')
+      ElMessage('登录成功')
     }
     if (resData == null) { //错误提示
       console.log("resData is null")
