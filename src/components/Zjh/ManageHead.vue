@@ -1,13 +1,12 @@
 <script setup>
 import {ref} from "vue";
-import Avatar from "@/components/Zjh/Avatar.vue";
 
 const username = ref("")
 
 </script>
 
 <template>
-  <div class="mainheader">
+  <div class="mainheader1">
     <p class="name">{{ username }}</p>
   </div>
   <div class="body">
@@ -23,7 +22,7 @@ const username = ref("")
 </template>
 
 <style scoped>
-.mainheader {
+.mainheader1 {
   height: 13rem;
   width: 60rem;
   background-image: url("manage-header.png");
@@ -32,10 +31,6 @@ const username = ref("")
   margin-left: 7rem;
 }
 
-.avatar {
-  padding-top: 9rem;
-  padding-left: 2rem;
-}
 
 .name {
   padding-top: 9rem;

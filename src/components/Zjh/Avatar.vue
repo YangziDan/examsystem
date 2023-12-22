@@ -1,17 +1,24 @@
 <script setup>
-import {reactive, ref, toRefs} from "vue";
+import {onMounted, reactive, ref, toRefs} from "vue";
 import {useUserinfoStore} from "@/stores/UserInfo";
-const state = reactive({
-  circleUrl:
-      'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
-})
+import cookies from "vue-cookies";
+import axios from "axios";
+const userId = ref(cookies.get('cid'))
+
+
+
+
 const userStore = useUserinfoStore()
-const circleUrl = toRefs(state)
+const imgUrl = ref("src/assets/img/"+userStore.UserImg)
+onMounted(()=>{
+  console.log(userStore.UserImg)
+  console.log(imgUrl.value)
+})
 </script>
 
 <template>
   <div>
-    <el-avatar :size="40" :src="userStore.UserImg" />
+    <el-avatar :size="40" :src="imgUrl" />
   </div>
 </template>
 

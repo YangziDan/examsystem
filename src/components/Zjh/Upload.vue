@@ -26,7 +26,8 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
     uploadFile
 ) => {
   imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-  userStore.UserImg=imageUrl.value
+  console.log(response)
+  userStore.UserImg=response
 }
 
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {

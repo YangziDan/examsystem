@@ -4,8 +4,10 @@ import axios from "axios";
 import cookies from "vue-cookies"
 import router from "@/router";
 import {ElMessage} from "element-plus";
+import {useUserinfoStore} from "@/stores/UserInfo";
 let role = ref(2);
 let labelPosition = ref('left');
+const userStore = useUserinfoStore
 let formLabelAlign = ref({
   username: '1',
   password: '123456'
@@ -38,6 +40,7 @@ function login() {
           break
       }
       ElMessage('登录成功')
+
     }
     if (resData == null) { //错误提示
       console.log("resData is null")
@@ -47,6 +50,7 @@ function login() {
       router.push({path: '/'})
     }
   })
+
 }
 
 function clickTag(key) {
