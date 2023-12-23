@@ -11,16 +11,16 @@
       </div>
       <div class="show">
         <div class="img1" :class="{'img1Transform': imgShow}">
-          <img :src="imgSrc.fail1" alt="哭了" v-if="score < 60">
-          <img :src="imgSrc.pass1" alt="过了" v-if="score >= 60">
+          <img src="@/assets/img/cry1.gif" alt="哭了" v-if="score < 60">
+          <img src="@/assets/img/good2.gif" alt="过了" v-if="score >= 60">
         </div>
         <div class="number" :class="{'border': isTransition}">
           <span>{{score}}</span>
           <span>分数</span>
         </div>
         <div class="img2" :class="{'img2Transform': imgShow}">
-          <img :src="imgSrc.fail2" alt="哭了" v-if="score < 60">
-          <img :src="imgSrc.pass2" alt="过了" v-if="score >= 60">
+          <img src="@/assets/img/cry2.jpg" alt="哭了" v-if="score < 60">
+          <img src="@/assets/img/good1.jpg" alt="过了" v-if="score >= 60">
         </div>
       </div>
       <ul class="time">
@@ -39,12 +39,6 @@ import axios from "axios";
 const isTransition = ref(false); // 是否渲染完成
 const score = ref(0); // 总分
 const imgShow = ref(false); // 不及格图片显示
-const imgSrc = {
-    fail1: import('@/assets/img/cry1.gif').then(module => module.default),
-    fail2: import('@/assets/img/cry2.jpg').then(module => module.default),
-    pass1: import('@/assets/img/good1.gif').then(module => module.default),
-    pass2: import('@/assets/img/good2.jpg').then(module => module.default),
-};
 const examData = ref({}); // 考试信息
 const userInfo = ref({ name: null, id: null }); // 用户信息
 const startTime = ref(null); // 考试开始时间
