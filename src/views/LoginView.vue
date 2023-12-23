@@ -3,7 +3,7 @@ import {ref} from "vue";
 import axios from "axios";
 import cookies from "vue-cookies"
 import router from "@/router";
-import {ElMessage} from "element-plus";
+import {ElMessage, ElNotification} from "element-plus";
 import {useUserinfoStore} from "@/stores/UserInfo";
 let role = ref(2);
 let labelPosition = ref('left');
@@ -39,14 +39,20 @@ function login() {
           router.push({path: '/'})
           break
       }
-      ElMessage('登录成功')
+      ElNotification({
+        title: '登录成功！',
+        type: 'success',
+      })
 
     }
     if (resData == null) { //错误提示
       console.log("resData is null")
       cookies.set("cname", '')
       cookies.set("cid", '')
-      alert('登录失败!账户或密码错误')
+      ElNotification({
+        title: '账户或密码错误！',
+        type: 'error',
+      })
       router.push({path: '/'})
     }
   })

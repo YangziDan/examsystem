@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import cookies from "vue-cookies"
 import router from "@/router";
-import {ElMessage} from "element-plus";
+import {ElMessage, ElNotification} from "element-plus";
 export const useUserinfoStore = defineStore('UserInfo', {
         state: () => {
             return {
@@ -50,7 +50,10 @@ export const useLoginStore = defineStore('login', () => {
             router.push({
                 path: '/'
             })
-            ElMessage('已经退出登录')
+            ElNotification({
+                title: '已经退出登录！',
+                type: 'success',
+            })
         }
         return {checkLogin,logOut}
     }

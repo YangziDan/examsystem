@@ -23,10 +23,6 @@
           <span>个人中心</span>
         </el-menu-item>
         <el-menu-item >
-          <el-icon><PieChart /></el-icon>
-          <span>学习用户数据</span>
-        </el-menu-item>
-        <el-menu-item >
           <el-icon><MoreFilled /></el-icon>
           <span>关于</span>
         </el-menu-item>

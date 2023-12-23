@@ -148,10 +148,10 @@ function handleDelete(index, row){
   axios.post('http://localhost:8999/multiQuestion/delMultiQuestion',{
     'questionId':row.id
   }).then(res=>{
-    axios.post('http://localhost:8999/paperManage/paperManage',{
-      'questionId':row.id,
+    axios.post('http://localhost:8999/paperManage/del',{
       'questionType':1,
-      'paperId':id
+      'paperId':id,
+      'questionId':row.id
     })
   })
 }

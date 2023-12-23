@@ -35,6 +35,8 @@
 import { ref, onMounted } from 'vue';
 import route from "@/router";
 import axios from "axios";
+import {useRouter} from "vue-router";
+import {ElNotification} from "element-plus";
 
 const isTransition = ref(false); // 是否渲染完成
 const score = ref(0); // 总分
@@ -43,12 +45,17 @@ const examData = ref({}); // 考试信息
 const userInfo = ref({ name: null, id: null }); // 用户信息
 const startTime = ref(null); // 考试开始时间
 const endTime = ref(null); // 考试结束时间
-
+const router=useRouter()
 onMounted(() => {
     getCookies();
     getExamData();
     transiton();
     getScore();
+    setTimeout(() => router.push({path: '/'}), 7000)
+  ElNotification({
+    title: '考试完毕！',
+    type: 'info',
+  })
 });
 
 const getExamData = () => {
