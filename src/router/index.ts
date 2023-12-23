@@ -158,8 +158,7 @@ const router = createRouter({
         }
 
       ]
-    }
-
+    },
   ]
 })
 

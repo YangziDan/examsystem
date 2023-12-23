@@ -3,17 +3,31 @@
         <!--顶部信息栏-->
         <div class="top">
             <ul class="item">
-                <li v-if="slider_flag"><el-icon @click="slider_flag = !slider_flag"><Fold /></el-icon></li>
-                <li v-if="!slider_flag"><el-icon @click="slider_flag = !slider_flag"><Expand /></el-icon></li>
+                <li v-if="slider_flag">
+                    <el-icon @click="slider_flag = !slider_flag">
+                        <Fold/>
+                    </el-icon>
+                </li>
+                <li v-if="!slider_flag">
+                    <el-icon @click="slider_flag = !slider_flag">
+                        <Expand/>
+                    </el-icon>
+                </li>
                 <li>{{ examData.type }}-{{ examData.source }}</li>
                 <li @click="flag = !flag">
-                    <el-icon><UserFilled /></el-icon>
+                    <el-icon>
+                        <UserFilled/>
+                    </el-icon>
                     <div class="msg" v-if="flag" @click="flag = !flag">
                         <p>姓名：{{ userInfo.name }}</p>
                         <p>准考证号: {{ userInfo.id }}</p>
                     </div>
                 </li>
-                <li><el-icon><CaretBottom /></el-icon></li>
+                <li>
+                    <el-icon>
+                        <CaretBottom/>
+                    </el-icon>
+                </li>
             </ul>
         </div>
         <div class="flexarea">
@@ -40,7 +54,9 @@
                     </ul>
                     <div class="l-bottom">
                         <div class="item">
+                            <hr>
                             <p>选择题部分</p>
+                            <hr>
                             <ul>
                                 <li v-for="(list, index1) in topic[1]" :key="index1">
                                     <a href="javascript:;"
@@ -53,7 +69,9 @@
                             </ul>
                         </div>
                         <div class="item">
+                            <hr>
                             <p>填空题部分</p>
+                            <hr>
                             <ul>
                                 <li v-for="(list, index2) in topic[2]" :key="index2">
                                     <a href="javascript:;" @click="fill(index2)"
@@ -65,7 +83,9 @@
                             </ul>
                         </div>
                         <div class="item">
+                            <hr>
                             <p>判断题部分</p>
+                            <hr>
                             <ul>
                                 <li v-for="(list, index3) in topic[3]" :key="index3">
                                     <a href="javascript:;" @click="judge(index3)"
@@ -86,9 +106,12 @@
                     <div class="title">
                         <p>{{ title }}</p>
                         <i class="iconfont icon-right auto-right"></i>
-                        <span>全卷共{{ topicCount[0] + topicCount[1] + topicCount[2] }}题  <i
-                            class="iconfont icon-time"></i>倒计时：<b>{{ time }}</b>分钟</span>
+                        <span>
+                            全卷共{{ topicCount[0] + topicCount[1] + topicCount[2] }}题
+                            <i class="iconfont icon-time"></i>倒计时：<b>{{ time }}</b>分钟
+                        </span>
                     </div>
+                    <!--题目区域-->
                     <div class="content">
                         <p class="topic"><span class="number">{{ number }}</span>{{ showQuestion }}</p>
                         <div v-if="currentType == 1">
@@ -98,40 +121,17 @@
                                 <el-radio :label="3">{{ showAnswer.answerC }}</el-radio>
                                 <el-radio :label="4">{{ showAnswer.answerD }}</el-radio>
                             </el-radio-group>
-<!--                            <div class="analysis" v-if="isPractice">-->
-<!--                                <ul>-->
-<!--                                    <li>-->
-<!--                                        <el-tag type="success">正确姿势：</el-tag>-->
-<!--                                        <span class="right">{{ reduceAnswer.rightAnswer }}</span></li>-->
-<!--                                    <li>-->
-<!--                                        <el-tag>题目解析：</el-tag>-->
-<!--                                    </li>-->
-<!--                                    <li>{{ reduceAnswer.analysis == null ? '暂无解析' : reduceAnswer.analysis }}</li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
                         </div>
                         <div class="fill" v-if="currentType == 2">
                             <div v-for="(item,currentIndex) in part" :key="currentIndex">
-                                <el-input placeholder="请填在此处"
+                                <el-input placeholder="请将答案填在此处"
                                           v-model="fillAnswer[index][currentIndex]"
                                           clearable
-                                          @blur="fillBG">
+                                          @blur="fillBG"
+                                          style="width: 500px"
+                                >
                                 </el-input>
                             </div>
-<!--                            <div class="analysis" v-if="isPractice">-->
-<!--                                <ul>-->
-<!--                                    <li>-->
-<!--                                        <el-tag type="success">正确姿势：</el-tag>-->
-<!--                                        <span class="right">{{ topic[2][index].answer }}</span></li>-->
-<!--                                    <li>-->
-<!--                                        <el-tag>题目解析：</el-tag>-->
-<!--                                    </li>-->
-<!--                                    <li>{{-->
-<!--                                            topic[2][index].analysis == null ? '暂无解析' : topic[2][index].analysis-->
-<!--                                        }}-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
                         </div>
                         <div class="judge" v-if="currentType == 3">
                             <el-radio-group v-model="judgeAnswer[index]" @change="getJudgeLabel"
@@ -139,27 +139,22 @@
                                 <el-radio :label="1">正确</el-radio>
                                 <el-radio :label="2">错误</el-radio>
                             </el-radio-group>
-<!--                            <div class="analysis" v-if="isPractice">-->
-<!--                                <ul>-->
-<!--                                    <li>-->
-<!--                                        <el-tag type="success">正确姿势：</el-tag>-->
-<!--                                        <span class="right">{{ topic[3][index].answer }}</span></li>-->
-<!--                                    <li>-->
-<!--                                        <el-tag>题目解析：</el-tag>-->
-<!--                                    </li>-->
-<!--                                    <li>{{-->
-<!--                                            topic[3][index].analysis == null ? '暂无解析' : topic[3][index].analysis-->
-<!--                                        }}-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
                         </div>
                     </div>
                     <div class="operation">
                         <ul class="end">
-                            <li @click="previous()"><i class="iconfont icon-previous"></i><span>上一题</span></li>
-                            <li @click="mark()"><i class="iconfont icon-mark-o"></i><span>标记</span></li>
-                            <li @click="next()"><span>下一题</span><i class="iconfont icon-next"></i></li>
+                            <li @click="previous()">
+                                <el-icon>
+                                    <ArrowLeft/>
+                                </el-icon>
+                                <span>上一题</span>
+                            </li>
+                            <li @click="mark()"><span>{{ markButtonText }}</span></li>
+                            <li @click="next()"><span>下一题</span>
+                                <el-icon>
+                                    <ArrowRight/>
+                                </el-icon>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -172,7 +167,7 @@ import {ref, onMounted} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import cookies from "vue-cookies"
 import axios from "axios";
-import {CaretBottom, Expand, Fold, UserFilled} from "@element-plus/icons-vue";
+import {ArrowLeft, ArrowRight, CaretBottom, Expand, Fold, UserFilled} from "@element-plus/icons-vue";
 import {ElMessage, ElMessageBox} from "element-plus";
 
 
@@ -209,6 +204,7 @@ const fillAnswer = ref([[]]); // 二维数组保存所有填空题答案
 const judgeAnswer = ref([]); // 保存所有判断题答案
 const topic1Answer = ref([]); // 学生选择题作答编号
 const rightAnswer = ref('');
+const markButtonText = ref("标记"); //标记按钮文本
 
 // Vue Router
 const route = useRoute();
@@ -249,7 +245,7 @@ const getExamData = async () => {
     try {
         const examResponse = await axios(`http://localhost:8999/examManage/exam/${examCode}`);
         // 使用对象展开运算符将请求结果中的 data 属性浅拷贝到 examData 中
-        examData.value = { ...examResponse.data.data };
+        examData.value = {...examResponse.data.data};
         // 初始化题目索引为 0
         index.value = 0;
         // 将总分赋值给 time
@@ -258,7 +254,10 @@ const getExamData = async () => {
         const paperId = examData.value.paperId;
         const paperResponse = await axios(`http://localhost:8999/paperManage/paper/${paperId}`);
         // 使用对象展开运算符将请求结果中的 data 属性浅拷贝到 topic 中
-        topic.value = { ...paperResponse.data };
+        topic.value = {...paperResponse.data};
+
+        // console.log(topic.value)
+
         // 获取当前题目答案并赋值给 reduceAnswer
         const reduceAnswer = topic.value[1][index.value];
         reduceAnswer.value = reduceAnswer;
@@ -309,56 +308,67 @@ const getExamData = async () => {
 
 // 选择题
 const change = (ind) => {
+
     index.value = ind;
+    // 获取当前题目的答案
     reduceAnswer.value = topic.value[1][index.value];
-    isFillClick.value = true;
+    // 标记为选择题
     currentType.value = 1;
 
+    // 设置是否点击了填空题选项为 true
+    isFillClick.value = true;
+    // 获取题目数组的长度
     const len = topic.value[1].length;
-
+    // 针对索引进行范围判断
     if (index.value < len) {
+        //判断标记状态
+        isMark(index.value)
+        // 防止索引小于 0
         if (index.value <= 0) {
             index.value = 0;
         }
-
+        // 输出调试信息
         console.log(`总长度${len}`);
-        console.log(`当前index:${index}`);
-
+        console.log(`当前index:${ind}`);
+        // 设置题目标题
         title.value = '请选择正确的选项';
+        // 获取当前题目的数据
         const Data = topic.value[1];
-
+        // 更新显示的题目和答案
         showQuestion.value = Data[index.value].question;
         showAnswer.value = Data[index.value];
+        // 更新题目编号
         number.value = index.value + 1;
     } else if (index.value >= len) {
+        // 索引超过题目数组长度时重置为 0
         index.value = 0;
+        // 调用填空题处理函数
         fill(index.value);
     }
 };
-
 // 填空题已答题目，如果已答该题目，设置第四个元素为true为标识符
 const fillBG = () => {
-    // TODO: Your logic for filling background here
     if (fillAnswer.value[index.value][0] != null) {
         fillAnswer.value[index.value][3] = true
     }
 };
-
 // 填空题
-const fill = (index) => {
+const fill = (ind) => {
     const len = topic.value[2].length;
     currentType.value = 2;
-    index.value = index;
+    index.value = ind;
 
     if (index.value < len) {
+        //判断标记状态
+        isMark(index.value)
         if (index.value < 0) {
             index.value = topic.value[1].length - 1;
             change(index.value);
         } else {
             console.log(`总长度${len}`);
-            console.log(`当前index:${index.value}`);
+            console.log(`当前index:${ind}`);
 
-            title.value = '请在横线处填写答案';
+            title.value = '请在文字填写框处填写答案';
             const Data = topic.value[2];
 
             console.log(Data);
@@ -367,27 +377,30 @@ const fill = (index) => {
             const partCount = showQuestion.value.split('()').length - 1;
             part.value = partCount;
 
-            number.value = topic.value.Count[0] + index.value + 1;
+            number.value = topicCount.value[0] + index.value + 1;
         }
     } else if (index.value >= len) {
         index.value = 0;
         judge(index.value);
     }
 };
-
 // 判断题
-const judge = (index) => {
+const judge = (ind) => {
+
     const len = topic.value[3].length;
     currentType.value = 3;
-    index.value = index;
+    index.value = ind;
 
     if (index.value < len) {
+        //判断标记状态
+        isMark(index.value)
+
         if (index.value < 0) {
             index.value = topic.value[2].length - 1;
             fill(index.value);
         } else {
             console.log(`总长度${len}`);
-            console.log(`当前index:${index.value}`);
+            console.log(`当前index:${ind}`);
 
             title.value = '请作出正确判断';
             const Data = topic.value[3];
@@ -395,7 +408,7 @@ const judge = (index) => {
             console.log(Data);
             showQuestion.value = Data[index.value].question;
 
-            number.value = topic.value.Count[0] + topic.value.Count[1] + index.value + 1;
+            number.value = topicCount.value[0] + topicCount.value[1] + index.value + 1;
         }
     } else if (index.value >= len) {
         index.value = 0;
@@ -444,6 +457,7 @@ const previous = () => {
 // 下一题
 const next = () => {
     index.value++
+
     switch (currentType.value) {
         case 1:
             change(index.value)
@@ -459,17 +473,27 @@ const next = () => {
 
 // 标记功能
 const mark = () => {
-    switch (currentType.value) {
-        case 1:
-            topic.value[1][index.value]["isMark"] = true //选择题标记
-            break
-        case 2:
-            topic.value[2][index.value]["isMark"] = true //填空题标记
-            break
-        case 3:
-            topic.value[3][index.value]["isMark"] = true //判断题标记
+    const currentTopic = topic.value[currentType.value][index.value];
+    // 切换标记状态
+    currentTopic.isMark = !currentTopic.isMark;
+    // 根据标记状态更新按钮文本
+    if (currentTopic.isMark) {
+        markButtonText.value = "取消标记";
+    } else {
+        markButtonText.value = "标记";
     }
 };
+
+//判断标记状态
+const isMark = (ind) => {
+    const currentTopic = topic.value[currentType.value][ind];
+    // 根据标记状态更新按钮文本
+    if (currentTopic.isMark) {
+        markButtonText.value = "取消标记";
+    } else {
+        markButtonText.value = "标记";
+    }
+}
 
 // 答案提交计算分数
 const commit = (id) => {
@@ -526,6 +550,7 @@ const commit = (id) => {
         }
     });
 
+
     console.log(`目前总分${finalScore}`);
     if (time.value !== 0) {
         ElMessageBox.confirm(
@@ -543,6 +568,7 @@ const commit = (id) => {
                 endTime.value = getTime(date);
                 let answerDate = endTime.value.substr(0, 10);
 
+                //保存分数
                 axios({
                     url: 'http://localhost:8999/score/score',
                     method: 'post',
@@ -562,14 +588,9 @@ const commit = (id) => {
                             endTime: endTime.value
                         }
                         sessionStorage.setItem("answerToScore", JSON.stringify(answerToScore))
+                        //跳转得分界面
                         router.push({
                             path: '/studentScore',
-                            // query: {
-                            //     examCode: id,
-                            //     score: finalScore,
-                            //     startTime: startTime.value,
-                            //     endTime: endTime.value,
-                            // },
                         });
                     }
                 });
@@ -607,19 +628,24 @@ onMounted(() => {
 
 
 <style scoped>
-#answer{
+#answer {
     background-color: #eee;
+    //border: 1px red solid;
 }
+
 a {
     text-decoration: none;
 }
+
 * {
     margin: 0;
     padding: 0;
 }
-ul{
+
+ul {
     list-style: none;
 }
+
 .iconfont.icon-time {
     color: #2776df;
     margin: 0px 6px 0px 20px;
@@ -705,8 +731,8 @@ ul{
     align-items: center;
     background-color: rgb(39, 118, 223);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     color: #fff;
 }
 
@@ -727,6 +753,14 @@ ul{
     justify-content: center;
     align-items: center;
     color: rgb(39, 118, 223);
+}
+
+.operation .end li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //border: 1px red solid;
 }
 
 .content .number {
@@ -759,11 +793,18 @@ ul{
 .content .el-radio-group label {
     color: #000;
     margin: 5px 0px;
+    align-items: center; /* 垂直居中对齐 */
+    //border: 1px red solid;
+
+    width: 1080px;
+    height: 40px;
 }
 
 .content .el-radio-group {
-    display: flex;
+    //display: flex;
     flex-direction: column;
+
+    //border: 1px red solid;
 }
 
 .right .title p {
@@ -822,31 +863,35 @@ ul{
     background-color: #fff;
 }
 
+.l-bottom .item ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+}
+
 .l-bottom .item p {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     margin-top: 10px;
     color: #000;
     margin-left: 10px;
     letter-spacing: 2px;
+
+    //border: 1px red solid;
 }
 
 .l-bottom .item li {
     width: 15%;
     margin-left: 5px;
     margin-bottom: 10px;
+
+    //border: 1px red solid;
 }
 
 .l-bottom .item {
-    display: flex;
+    //display: flex;
     flex-direction: column;
-}
-
-.l-bottom .item ul {
-    width: 100%;
-    margin-bottom: -8px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
 }
 
 .l-bottom .item ul li a {
@@ -878,6 +923,7 @@ ul{
     width: 260px;
     height: 100%;
     margin: 10px 10px 0px 10px;
+
 }
 
 .left .l-top li:nth-child(2) a {
